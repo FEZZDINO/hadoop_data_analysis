@@ -1,0 +1,21 @@
+2.3.1
+基本的文件系统操作 
+
+hadoop fs -help  		#查看haddop fs 的全部command
+hadoop fs -copyFromLocal shakespeare.txt shakespeare.txt			#带有<src>和<dst>两个参数，均为相对路径
+
+或者使用
+hadoop fs -put /full_src_address  hdfs://full_dst_name
+
+读hdfs中的文件
+hadoop fs -cat shakepeare.txt | less				#不加less会output全部的
+
+若想将文件从hdfs传输到本地文件，可以使用get或者copyToLocal
+hadoop fs -get shakespeare.txt ./shakespeare.from-remote.txt
+				<src>			<dst>
+
+hadoop fs 命令好似一个功能齐全的hdfs命令行接口
+
+hadoop fs -chmod 664 shakespeare.txt  
+	rwx, 以二进制，例如rw- 为110，为6，-wx 为011 为3
+	还有chgrp和chown

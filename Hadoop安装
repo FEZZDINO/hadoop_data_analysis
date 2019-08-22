@@ -1,0 +1,44 @@
+mac os mojave 10.14.6
+配置ssh看这个
+https://blog.csdn.net/yamaxifeng_132/article/details/54932269
+其余的看这个
+https://www.jianshu.com/p/de7eb61c983a
+
+bin/hdfs dfs -mkdir /user
+
+关闭localhost 的方法
+https://unix.stackexchange.com/questions/243172/why-ssh-myloginlocalhost-works-but-ssh-rootlocalhost-doesnt
+
+
+hadoop on google cloud:https://medium.com/google-cloud/launch-a-hadoop-cluster-in-90-seconds-or-less-in-google-cloud-dataproc-b3acc1c02598
+因为使用了vpn，public ip不固定，需要增加ip range。
+
+三个port，8088，50070，8080，除开8088，其他两个只能用localhost:port形式访问
+
+无法用javac compile，找不到package。
+javac WordMapper.java -cp $(/usr/bin/hadoop classpath)
+
+
+29页的 hadoop com.sun.tools.javac.Main WordCount.java需要改成
+	hadoop com.sun.tools.javac.Main WordCount.java WordMapper.java SumReducer.java
+
+jar cf wc.jar WordCount.class WordMapper.class SumReducer.class
+
+hadoop中ctrl+C不能真正终止作业，要使用hadoop job -list查看正在运行的作业，在使用kill命令hadoop -kill $JOB_IDclass Solution:
+    def decodeString(self, s):
+        stack = []
+        stack.append(["", 1])
+        num = ""
+        for ch in s:
+            if ch.isdigit():
+                num += ch
+            elif ch == '[':
+                stack.append(["", int(num)])
+                num = ""
+            elif ch == ']':
+                st, k = stack.pop()
+                stack[-1][0] += st*k
+            else:
+                stack[-1][0] += ch
+            #print(stack)
+        return stack[0][0]
