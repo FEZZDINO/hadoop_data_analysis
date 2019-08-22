@@ -1,0 +1,1 @@
+cat ontime_flights.tsv | ./mapper.py | sort | ./reducer.py > output.csv
