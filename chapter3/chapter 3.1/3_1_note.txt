@@ -1,0 +1,14 @@
+chapter3.1
+
+39页，hadoop-streaming*.jar 在 /usr/lib/hadoop-mapreduce里
+
+hadoop jar  /usr/lib/hadoop-mapreduce/hadoop-streaming-2.9.2.jar\
+  -input ontime_flights.tsv \
+  -output average_delay.csv \
+  -mapper mapper.py \
+  -reducer reducer.py \
+  -file mapper.py \
+  -file reducer.py 
+
+  想要执行这步指令，需要hadoop fs -put ontime_flights.tsv /usr/fanjie，这个文件需要在hdfs里
+  查看需要hadoop fs -cat average_delay/part-00000，但因为一共有3个datanode,三个加在一起才是完整的输出
