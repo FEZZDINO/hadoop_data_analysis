@@ -1,5 +1,7 @@
 chapter3.1
 
+script 是本地伪分布式运行的脚本
+
 39页，hadoop-streaming*.jar 在 /usr/lib/hadoop-mapreduce里
 
 hadoop jar  /usr/lib/hadoop-mapreduce/hadoop-streaming-2.9.2.jar\
